@@ -26,8 +26,8 @@ const Header =(props)=> {
         <View style={[styles.headerContainer, {backgroundColor: props.type=="home"?colors.mainBackgroundColor:"white"}]}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 {props.type=="home"?(
-                    <TouchableOpacity onPress={()=> setVisibleModal(true)}>
-                        <Image resizeMode="cover" style={styles.image} source={languageTheme.language=="vietnam"?images.vietnam:images.english} />
+                    <TouchableOpacity onPress={()=> nav.openDrawer()}>
+                        <Image resizeMode="contain" style={styles.image} source={icons.ic_drawer} />
                     </TouchableOpacity>
                 ):(
                     <TouchableOpacity onPress={()=> nav.goBack()}>
@@ -39,40 +39,7 @@ const Header =(props)=> {
             <TouchableOpacity>
                 <Icon name="search" color={props.type=="home"?"white":"black"} size={20} />
             </TouchableOpacity>
-            <ModalForm 
-                visible={visibleModal}
-                onRequestClose={()=> setVisibleModal(false)}
-            >
-                <Text style={styles.chooseLangueText}>{language=="vietnam"?"Chọn ngôn ngữ":"Select language"}</Text>
-                <View>
-                    <TouchableOpacity onPress={chooseVietnamHandle} style={[styles.languageButton,
-                        languageTheme.language=="vietnam" && {backgroundColor: colors.mainBackgroundColor}
-                    ]}>
-                        <Image resizeMode="cover" style={styles.chooseLangueImg} source={images.vietnam} />
-                        {/* <Text style={styles.languageText}>Việt Nam</Text> */}
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={chooseEnglishHandle} style={[styles.languageButton,
-                        languageTheme.language=="english" && {backgroundColor: colors.mainBackgroundColor}
-                    ]}>
-                        <Image resizeMode="cover" style={styles.chooseLangueImg} source={images.english} />
-                        {/* <Text style={styles.languageText}>English</Text> */}
-                    </TouchableOpacity>
-                </View>
-                <TouchableOpacity onPress={()=>setVisibleModal(false)}
-                 style={{
-                    position: 'absolute',
-                    top: -5,
-                    right: -5,
-                    backgroundColor: 'red',
-                    height: 26,
-                    width: 26,
-                    borderRadius: 100,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-            }}>
-                        <Text style={{color: 'white'}}>X</Text>
-                </TouchableOpacity>
-            </ModalForm>
+            
         </View>
     )
     
@@ -89,9 +56,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: width*0.03
     },
     image: {
-        borderRadius: 20,
-        height: height * 0.03,
-        width: width * 0.1,
+        //borderRadius: 20,
+        height: width * 0.06,
+        width: width * 0.05,
         //backgroundColor: 'blue'
     },
     name: {

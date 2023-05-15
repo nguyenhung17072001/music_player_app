@@ -27,17 +27,7 @@ import Home from '../Screens/Home/Home';
 
 
 //HomeNavigation
-import AllFile from '../Screens/AllFile/AllFile';
-import PDFFile from '../Screens/PDFFile/PDFFile';
-import DocFile from '../Screens/DocFile/DocFile';
-import ExcelFile from '../Screens/ExcelFile/ExcelFile';
-import PPTFile from '../Screens/PPTFile/PPTFile';
-import TXTFile from '../Screens/TXTFile/TXTFile';
-import ImageFile from '../Screens/ImageFile/ImageFile';
 
-//View File
-import ViewPDF from '../Screens/ViewFile/ViewPDF';
-import ViewExcel from '../Screens/ViewFile/ViewExcel';
 
 
 import { navigationRef } from './RootNavigation';
@@ -46,6 +36,7 @@ import { navigationRef } from './RootNavigation';
 
 
 const Stack = createStackNavigator();
+
 const MainNavigation = (props) => {
 
   
@@ -76,22 +67,48 @@ const HomeNavigation =() =>{
       <HomeStack.Navigator screenOptions={{headerShown:false}}>
 
         {/* Home Screens */}
-        <HomeStack.Screen name="MyTabs" component={MyTabs} />
-        <HomeStack.Screen name='AllFile' component={AllFile} />
-        <HomeStack.Screen name='PDFFile' component={PDFFile} />
-        <HomeStack.Screen name='DocFile' component={DocFile} />
-        <HomeStack.Screen name='ExcelFile' component={ExcelFile} />
-        <HomeStack.Screen name='PPTFile' component={PPTFile} />
-        <HomeStack.Screen name='TXTFile' component={TXTFile} />
-        <HomeStack.Screen name='ImageFile' component={ImageFile} />
-        <HomeStack.Screen name='ViewPDF' component={ViewPDF} />
-        <HomeStack.Screen name='ViewExcel' component={ViewExcel} />
+        <HomeStack.Screen name="DrawerNavigation" component={DrawerNavigation} />
+        
 
         
       </HomeStack.Navigator>
     // </NavigationContainer>
   )
 }
+
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      
+      <DrawerItem
+        label="Trang chủ"
+        labelStyle={{color: '#1D252D', fontSize: 16, fontFamily: font.medium}}
+        onPress={() => props.navigation.navigate('Home')}
+        
+        /* icon={()=>(<Image resizeMode='contain' style={{width: width*0.07, height: width*0.07}} source={icons.ic_profile} />)} */
+      />
+      
+      
+    </DrawerContentScrollView>
+  );
+}
+const Drawer = createDrawerNavigator();
+const DrawerNavigation = () => {
+  return (
+    <Drawer.Navigator initialRouteName="Home"
+    drawerContent={(props) => <CustomDrawerContent {...props} />}
+    screenOptions={{headerShown:false,
+      tabBarHideOnKeyboard: true,
+
+      //tabBarShowLabel:true, 
+      tabBarStyle:{height:Dimensions.get('window').height*0.08}}}
+    >
+        <Drawer.Screen name="Home" component={Home} />
+        
+    </Drawer.Navigator>
+  )
+}
+
 const Tab = createBottomTabNavigator();
 function MyTabs() {
 

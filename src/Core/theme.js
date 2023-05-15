@@ -9,7 +9,7 @@ const font = {
 }
 const colors = { 
   
-  mainBackgroundColor: '#228B22',
+  mainBackgroundColor: '#091227',
   orangetheme:'#FF7466',
   orangeBackgroundColor:'#FFF5EA',
   mainText: 'black',
@@ -21,7 +21,7 @@ const colors = {
   activethemeborder:'red',
   orderTrackColor:'#EAE7E7',
   shippingAdressColor:'#BCBCBC',
-  white: 'white',
+  white: '#EAF0FF',
   App_Name_Color:'white',
   carouselLine:'#C0C0C0',
   
@@ -36,11 +36,20 @@ const icons = {
   ic_txt: require("../assets/icons/ic_txt.png"),
   ic_xls: require("../assets/icons/ic_xls.png"),
   icon_all: require("../assets/icons/icon_all.png"),
+
+  //
+
+
+  ic_drawer: require("../assets/icons/ic_drawer.png"),
   
 }
 const images = {
   vietnam: require("../assets/images/vietnam.png"),
   english: require("../assets/images/english.png"),
+  //
+
+
+  MonsterGoBump: require("../assets/images/MonsterGoBump.png"),
 }
 
 
